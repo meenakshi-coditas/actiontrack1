@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>actiontrack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>actiontrack</h1>
+    <p class="sub">Action items from meeting notes. Follow-ups are saved as drafts &mdash; <strong>nothing is ever sent</strong>.</p>
+  </header>
+
+  <main>
+    <div id="error" class="banner" role="alert" hidden></div>
+
+    <section class="cards" aria-label="Summary">
+      <div class="card"><span class="num" id="c-open">-</span><span class="lbl">Open</span></div>
+      <div class="card danger"><span class="num" id="c-overdue">-</span><span class="lbl">Overdue</span></div>
+      <div class="card ok"><span class="num" id="c-done">-</span><span class="lbl">Done</span></div>
+      <div class="card warn"><span class="num" id="c-unassigned">-</span><span class="lbl">Unassigned</span></div>
+    </section>
+
+    <section class="panel" aria-labelledby="h-ingest">
+      <h2 id="h-ingest">Ingest notes</h2>
+      <form id="ingest-form" class="row">
+        <label for="folder">Folder (on this machine)</label>
+        <input id="folder" name="folder" value="notes" autocomplete="off">
+        <button type="submit" class="primary">Ingest</button>
+      </form>
+      <div id="report" class="report" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="h-items">
+      <h2 id="h-items">Action items <span id="count" class="muted"></span></h2>
+      <form id="filters" class="row filters">
+        <label>Owner <select id="f-owner"><option value="">Anyone</option></select></label>
+        <label>Status
+          <select id="f-status">
+            <option value="">Any</option><option value="open">Open</option>
+            <option value="overdue">Overdue</option><option value="done">Done</option>
+          </select>
+        </label>
+        <label>Due before <input id="f-due" type="date"></label>
+        <button type="button" id="f-reset">Reset</button>
+      </form>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Status</th><th>Owner</th><th>Due</th><th>Task</th><th>Source</th><th></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p id="empty" class="muted" hidden>No items match. Ingest a folder of notes first.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="h-follow">
+      <h2 id="h-follow">Follow-up drafts</h2>
+      <p class="muted">Drafts are written as unsent <code>.eml</code> files. Ambiguous owners (two people with the same first name) and unassigned items are never emailed.</p>
+      <form id="follow-form" class="row">
+        <label for="follow-owner">Owner</label>
+        <select id="follow-owner"></select>
+        <button type="button" id="btn-preview">Preview</button>
+        <button type="button" id="btn-create" class="primary">Create drafts</button>
+      </form>
+      <div id="drafts" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "actiontrack",
+  "version": "2.0.0",
+  "description": "Extract action items from Markdown meeting notes, track them in SQLite, and prepare (never send) Gmail follow-up drafts.",
+  "type": "module",
+  "bin": { "actiontrack": "bin/actiontrack.js" },
+  "scripts": {
+    "start": "node bin/actiontrack.js",
+    "samples": "node scripts/gen-samples.cjs",
+    "test": "node --test test/",
+    "test:legacy": "node --test legacy/test/"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "better-sqlite3": "11.10.0"
+  },
+  "license": "MIT"
+}

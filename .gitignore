@@ -1,0 +1,6 @@
+node_modules/
+.actiontrack/
+*.db
+*.db-wal
+*.db-shm
+.env

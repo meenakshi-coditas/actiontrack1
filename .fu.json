@@ -1,0 +1,12 @@
+{
+  "generatedFor": "2026-10-15",
+  "sent": false,
+  "mcpTool": "create_draft",
+  "drafts": [],
+  "unresolved": [],
+  "unassignedTaskIds": [],
+  "gmail": {
+    "attempted": false,
+    "reason": "No gateway configured; preview only. Nothing was created in Gmail."
+  }
+}
